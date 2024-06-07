@@ -1,7 +1,4 @@
-com\grupo\integrador\logic\Cliente.class
-com\grupo\integrador\gui\GUI.class
 com\grupo\integrador\Integrador.class
 com\grupo\integrador\logic\Libro.class
-com\grupo\integrador\logic\Venta.class
-com\grupo\integrador\logic\Libreria.class
 com\grupo\integrador\gui\GUI$1.class
+com\grupo\integrador\gui\GUI.class

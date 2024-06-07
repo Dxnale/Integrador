@@ -6,43 +6,44 @@ public class Libro {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getAutor() {
         return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public String getEditorial() {
-        return editorial;
     }
 
     public String getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public int getStock() {
-        return stock;
+    public String getCodigoReserva() {
+        return codigoReserva;
     }
 
-    public int getPrecio() {
-        return precio;
+    public String getCodigoEntrega() {
+        return codigoEntrega;
+    }
+
+    public boolean isReservado() {
+        return reservado;
+    }
+
+    public boolean isSolicitado() {
+        return solicitado;
+    }
+
+    public void setReservado(boolean reservado) {
+        this.reservado = reservado;
+    }
+
+    public void setSolicitado(boolean solicitado) {
+        this.solicitado = solicitado;
     }
 
     private String titulo;
     private String autor;
-    private String genero;
-    private String editorial;
     private String fechaPublicacion;
-    private int stock;
-    private int precio;
+    private String codigoReserva;
+    private String codigoEntrega;
+    private boolean reservado;
+    private boolean solicitado;
+
 }

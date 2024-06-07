@@ -1,8 +1,8 @@
-# Diagrama de clases para integrativa - Libreria
+# Diagrama de clases para integrativa - Biblioteca
 
 ## Descripción
 
-El siguiente diagrama de clases representa una librería, donde se pueden agregar libros, clientes y ventas. Los libros tienen un título, autor, género, editorial, fecha de publicación, stock y precio. Los clientes tienen un nombre, rut y si es socio o no. Las ventas tienen un cliente, un libro, una cantidad y un total. La librería tiene una lista de libros, clientes y ventas, y puede agregar libros, clientes y ventas, vender libros, mostrar el inventario y mostrar las ventas.
+El siguiente diagrama de clases representa una biblioteca, con un log in para los usuarios estandar y para los administradores, donde los usuarios estandar pueden ver la disponibilidad de los libros (Lista en base de datos) y reservarlos (Cambiar su estado), los libros que se encuentran reservados (Estado del libro) no se pueden prestar, y la cola de espera (Queue) para poder reservar un libro cuando este se encuentre disponible. Los administradores pueden agregar libros a la base de datos, ver los libros que se encuentran en stock, ver los libros que se encuentran en cola de espera, ver los libros que se encuentran prestados
 
 ## Diagrama de clases
 
@@ -12,103 +12,52 @@ classDiagram
     class Libro{
         +String titulo
         +String autor
-        +String genero
-        +String editorial
         +String fechaPublicacion
-        +int stock
-        +int precio
+        +String codigoReserva
+        +String codigoEntrega
+        +boolean reservado
+        +boolean solicitado
 
         +String getTitulo()
         +String getAutor()
-        +String getGenero()
-        +String getEditorial()
         +String getFechaPublicacion()
-        +int getStock()
-        +int getPrecio()
+        +String getCodigoReserva()
+        +String getCodigoEntrega()
+        +boolean isReservado()
+        +boolean isSolicitado()
+
+        +void setEstado()
+        +void setReservado()
+        +void setSolicitado()
     }
 
-    class Cliente{
+    class Usuario{
         +String nombre
-        +String rut
-        +boolean esSocio
+        +String id
+        +String tipo
 
         +String getNombre()
-        +String getRut()
-        +boolean getEsSocio()
-        +void setEsSocio(boolean esSocio)
+        +String getId()
+        +String getTipo()
     }
-
-    class Venta{
-        +Cliente cliente
-        +Libro libro
-        +int cantidad
-        +int total
-
-        +Cliente getCliente()
-        +Libro getLibro()
-        +int getCantidad()
-        +int getTotal()
-    }
-
-    class Libreria{
+    
+    class Biblioteca{
         +List<Libro> libros
-        +List<Cliente> clientes
-        +List<Venta> ventas
+        +List<Usuario> usuarios
+        +Queue<Libro> colaEspera
+        +Stack<Libro> eliminados
 
-        +void agregarLibro(Libro libro)
-        +void agregarCliente(Cliente cliente)
-        +void agregarVenta(Venta venta)
-        +void venderLibro(Libro libro, Cliente cliente, int cantidad)
-        +void mostrarInventario()
-        +void mostrarVentas()
+        +List getLibros()
+        +List getUsuarios()
+        +Queue getColaEspera()
+        +Stack getEliminados()
+        +List getLibrosReservados()
+        
+        +boolean eliminarLibro()
+        +boolean agregarLibro()
+        +boolean reservarLibro()
+        +boolean deshacerEliminacion()
+
+        +void crearUsuario()
     }
-
-    Libro "1" -- "0..*" Venta
-    Cliente "1" -- "0..*" Venta
-    Libreria "1" -- "0..*" Libro
-    Libreria "1" -- "0..*" Cliente
-    Libreria "1" -- "0..*" Venta
-
-```
-
-## Diagrama de base de datos
-
-```mermaid
-
-erDiagram
-    Libro {
-        String titulo
-        String autor
-        String genero
-        String editorial
-        String fechaPublicacion
-        int stock
-        int precio
-    }
-
-    Cliente {
-        String nombre
-        String rut
-        boolean esSocio
-    }
-
-    Venta {
-        int cantidad
-        int total
-    }
-
-    Libro ||--o{ Venta : "0..*"
-    Cliente ||--o{ Venta : "0..*"
-
-```
-
-## Procesos en la base de datos
-
-- Agregar libro
-- Agregar cliente
-- Agregar venta
-- Vender libro
-- Mostrar inventario
-- Mostrar ventas
-- Mostrar clientes
 ```
