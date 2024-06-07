@@ -10,19 +10,15 @@ public class Biblioteca {
     public List<Libro> getLibros() {
         return libros;
     }
-
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
-
     public Queue<Libro> getColaEspera() {
         return colaEspera;
     }
-
     public Stack<Libro> getEliminados() {
         return eliminados;
     }
-
     public List<Libro> getLibrosReservados() {
         List<Libro> reservados = new ArrayList<>();
 
@@ -34,7 +30,6 @@ public class Biblioteca {
 
         return reservados;
     }
-
     public List<Libro> getLibrosSolicitados() {
         List<Libro> solicitados = new ArrayList<>();
 
@@ -46,6 +41,7 @@ public class Biblioteca {
 
         return solicitados;
     }
+
 
     public boolean agregarLibro(Libro libro){
         if (!libros.contains(libro)){
@@ -63,47 +59,36 @@ public class Biblioteca {
         }
         return false;
     }
-
-    public boolean reservarLibro(Libro libro){
-        if (libros.contains(libro)){
-            libro.setReservado(true);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean deshacerEliminacion(){
-        if (!eliminados.isEmpty()){
+    public boolean deshacerEliminacion() {
+        if (!eliminados.isEmpty()) {
             libros.add(eliminados.pop());
             return true;
         }
         return false;
     }
 
-    public boolean solicitarLibro(Libro libro){
-        if (libros.contains(libro)){
+    public boolean reservarLibro(Libro libro) {
+        if (libros.contains(libro)) {
+            libro.setReservado(true);
+            return true;
+        }
+        return false;
+    }
+    public boolean cancelarReserva(Libro libro) {
+        if (libros.contains(libro)) {
+            libro.setReservado(false);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean solicitarLibro(Libro libro) {
+        if (libros.contains(libro)) {
             libro.setSolicitado(true);
             return true;
         }
         return false;
     }
-
-    public boolean devolverLibro(Libro libro){
-        if (libros.contains(libro)){
-            libro.setReservado(false);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean cancelarReserva(Libro libro){
-        if (libros.contains(libro)){
-            libro.setReservado(false);
-            return true;
-        }
-        return false;
-    }
-
     public boolean cancelarSolicitud(Libro libro){
         if (libros.contains(libro)){
             libro.setSolicitado(false);
@@ -118,6 +103,23 @@ public class Biblioteca {
             return true;
         }
         return false;
+    }
+    public boolean usuarioExiste(String nombre, String id){
+        for (Usuario usuario : usuarios){
+            if (usuario.getNombre().equals(nombre) && usuario.getId().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Usuario getUsuario(String nombre, String id){
+        for (Usuario usuario : usuarios){
+            if (usuario.getNombre().equals(nombre) && usuario.getId().equals(id)){
+                return usuario;
+            }
+        }
+        return null;
     }
     
     private List<Libro> libros;

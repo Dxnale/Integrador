@@ -10,54 +10,62 @@ El siguiente diagrama de clases representa una biblioteca, con un log in para lo
 
 classDiagram
     class Libro{
-        +String titulo
-        +String autor
-        +String fechaPublicacion
-        +String codigoReserva
-        +String codigoEntrega
-        +boolean reservado
-        +boolean solicitado
+        - String titulo
+        - String autor
+        - String fechaPublicacion
+        - String codigoReserva
+        - String codigoEntrega
+        - boolean reservado
+        - boolean solicitado
 
-        +String getTitulo()
-        +String getAutor()
-        +String getFechaPublicacion()
-        +String getCodigoReserva()
-        +String getCodigoEntrega()
-        +boolean isReservado()
-        +boolean isSolicitado()
+        + String getTitulo()
+        + String getAutor()
+        + String getFechaPublicacion()
+        + String getCodigoReserva()
+        + String getCodigoEntrega()
+        + boolean isReservado()
+        + boolean isSolicitado()
 
-        +void setEstado()
-        +void setReservado()
-        +void setSolicitado()
+        + void setReservado()
+        + void setSolicitado()
     }
 
     class Usuario{
-        +String nombre
-        +String id
-        +String tipo
+        - String nombre
+        - String id
+        - boolean admin
 
-        +String getNombre()
-        +String getId()
-        +String getTipo()
+        + String getNombre()
+        + String getId()
+        + boolean isAdmin()
     }
     
-    class Biblioteca{
-        +List<Libro> libros
-        +List<Usuario> usuarios
-        +Queue<Libro> colaEspera
-        +Stack<Libro> eliminados
-
-        +List getLibros()
-        +List getUsuarios()
-        +Queue getColaEspera()
-        +Stack getEliminados()
-        +List getLibrosReservados()
+      class Biblioteca {
+        - List<Libro> libros
+        - List<Usuario> usuarios
+        - Queue<Libro> colaEspera
+        - Stack<Libro> eliminados
         
-        +boolean eliminarLibro()
-        +boolean agregarLibro()
-        +boolean reservarLibro()
-        +boolean deshacerEliminacion()
+        + List<Libro> getLibros()
+        + List<Usuario> getUsuarios()
+        + Queue<Libro> getColaEspera()
+        + Stack<Libro> getEliminados()
+        + List<Libro> getLibrosReservados()
+        + List<Libro> getLibrosSolicitados()
 
-        +void crearUsuario()
+        + boolean agregarLibro(Libro libro)
+
+        + boolean reservarLibro(Libro libro)
+        + boolean cancelarReserva(Libro libro)
+
+        + boolean eliminarLibro(Libro libro)
+        + boolean deshacerEliminacion()
+
+        + boolean solicitarLibro(Libro libro)
+        + boolean cancelarSolicitud(Libro libro)
+
+        + boolean agregarUsuario(Usuario usuario)
+        +boolean usuarioExiste(Usuario usuario)
+
     }
 ```
