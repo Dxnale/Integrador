@@ -22,4 +22,5 @@ com\grupo\integrador\gui\LoginForm$5.class
 com\grupo\integrador\gui\ReservasForm$1.class
 com\grupo\integrador\logic\Biblioteca.class
 com\grupo\integrador\logic\Libro_.class
+com\grupo\integrador\persistence\ControladorPersistencia.class
 com\grupo\integrador\gui\LoginForm$2.class
