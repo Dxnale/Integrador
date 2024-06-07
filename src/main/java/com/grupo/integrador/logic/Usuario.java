@@ -1,6 +1,24 @@
 package com.grupo.integrador.logic;
 
-public class Usuario {
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Usuario implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    @Basic
+    private String nombre;
+    private boolean administrador;
+
+    public Usuario() {
+    }
 
     public String getNombre() {
         return nombre;
@@ -10,18 +28,15 @@ public class Usuario {
         return id;
     }
 
-    public boolean isAdmin() {
-        return this.admin;
+    public boolean isAdministrador() {
+        return this.administrador;
     }
 
-    private String nombre;
-    private String id;
-    private boolean admin;
 
     public Usuario(String nombre, String id, boolean admin) {
         this.nombre = nombre;
         this.id = id;
-        this.admin = admin;
+        this.administrador = admin;
     }
 
 }

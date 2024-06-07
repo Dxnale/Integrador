@@ -1,6 +1,29 @@
 package com.grupo.integrador.logic;
 
-public class Libro {
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Libro implements Serializable {
+
+    @Id
+    private String titulo;
+    @Basic
+    private String autor;
+    private String codigoReserva;
+    private String codigoEntrega;
+    private boolean reservado;
+    private boolean solicitado;
+    @Temporal(TemporalType.DATE)
+    private Date fechaPublicacion;
+
+    public Libro() {
+    }
 
     public String getTitulo() {
         return titulo;
@@ -10,7 +33,7 @@ public class Libro {
         return autor;
     }
 
-    public String getFechaPublicacion() {
+    public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
 
@@ -38,12 +61,14 @@ public class Libro {
         this.solicitado = solicitado;
     }
 
-    private String titulo;
-    private String autor;
-    private String fechaPublicacion;
-    private String codigoReserva;
-    private String codigoEntrega;
-    private boolean reservado;
-    private boolean solicitado;
+    public Libro(String titulo, String autor, Date fechaPublicacion, String codigoReserva, String codigoEntrega) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.fechaPublicacion = fechaPublicacion;
+        this.codigoReserva = codigoReserva;
+        this.codigoEntrega = codigoEntrega;
+        this.reservado = false;
+        this.solicitado = false;
+    }
 
 }
