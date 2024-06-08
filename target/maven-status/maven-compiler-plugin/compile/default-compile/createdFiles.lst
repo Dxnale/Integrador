@@ -8,6 +8,7 @@ com\grupo\integrador\gui\LoginForm.class
 com\grupo\integrador\gui\LoginForm$3.class
 com\grupo\integrador\gui\LoginForm$6.class
 com\grupo\integrador\persistence\exceptions\NonexistentEntityException.class
+com\grupo\integrador\logic\ControllerLogic.class
 com\grupo\integrador\gui\LoginForm$1.class
 com\grupo\integrador\gui\Solicitudesform.class
 com\grupo\integrador\Integrador.class

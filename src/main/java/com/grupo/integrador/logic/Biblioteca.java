@@ -1,11 +1,33 @@
 package com.grupo.integrador.logic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Biblioteca {
+    
+    private List<Libro> libros;
+    private List<Usuario> usuarios;
+    private Queue<Libro> colaEspera;
+    private Stack<Libro> eliminados;
+    private ControllerLogic ctrl;
+
+    public Biblioteca() {
+
+        ctrl = new ControllerLogic();
+
+        this.colaEspera = new LinkedList<Libro>();
+        this.eliminados = new Stack();
+
+        List<Libro> tempLibros = ctrl.getLibrosFromDB();
+        this.libros = tempLibros != null ? tempLibros : new LinkedList<Libro>();
+
+        List<Usuario> tempUsuarios = ctrl.getUsuariosFromDB();
+        this.usuarios = tempUsuarios != null ? tempUsuarios : new LinkedList<Usuario>();
+
+    }
 
     public List<Libro> getLibros() {
         return libros;
@@ -50,7 +72,6 @@ public class Biblioteca {
         }
         return false;
     }
-
     public boolean eliminarLibro(Libro libro){
         if (libros.contains(libro)){
             libros.remove(libro);
@@ -121,9 +142,5 @@ public class Biblioteca {
         }
         return null;
     }
-    
-    private List<Libro> libros;
-    private List<Usuario> usuarios;
-    private Queue<Libro> colaEspera;
-    private Stack<Libro> eliminados;
+
 }

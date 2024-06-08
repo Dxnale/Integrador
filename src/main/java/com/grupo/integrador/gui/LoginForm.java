@@ -171,6 +171,7 @@ public class LoginForm extends javax.swing.JFrame {
     
     private boolean adminToggle;
     private Biblioteca biblioteca;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnAdmin;
     private java.awt.Button btnLogin;

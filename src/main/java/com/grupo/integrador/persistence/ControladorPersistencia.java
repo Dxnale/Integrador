@@ -1,12 +1,24 @@
 package com.grupo.integrador.persistence;
 
+import com.grupo.integrador.logic.Libro;
+import com.grupo.integrador.logic.Usuario;
+import java.util.List;
+
 public class ControladorPersistencia {
-    public UsuarioJpaController ujc;
-    public LibroJpaController ljc;
+
+    private UsuarioJpaController usuarioJpaController;
+    private LibroJpaController libroJpaController;
 
     public ControladorPersistencia() {
-        this.ujc = new UsuarioJpaController();
-        this.ljc = new LibroJpaController();
+        this.usuarioJpaController = new UsuarioJpaController();
+        this.libroJpaController = new LibroJpaController();
     }
 
+    public List<Libro> getLibrosFromDB() {
+        return libroJpaController.findLibroEntities();
+    }
+
+    public List<Usuario> getUsuariosFromDB() {
+        return usuarioJpaController.findUsuarioEntities();
+    }
 }
