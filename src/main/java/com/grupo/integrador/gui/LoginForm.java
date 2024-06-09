@@ -30,6 +30,7 @@ public class LoginForm extends javax.swing.JFrame {
         setName("LoginFrame"); // NOI18N
         setResizable(false);
 
+        campoTextoNombre.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         campoTextoNombre.setText("Nombre");
         campoTextoNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -42,6 +43,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        campoTextoID.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         campoTextoID.setText("ID");
         campoTextoID.setHighlighter(null);
         campoTextoID.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,6 +52,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        btnAdmin.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         btnAdmin.setText("Admin");
         btnAdmin.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -57,6 +60,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         btnLogin.setLabel("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +68,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        btnRegister.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         btnRegister.setLabel("Registrarte");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +76,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        lblTitulo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 40)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Noto Sans Mono", 1, 36)); // NOI18N
         lblTitulo.setText("Librería");
         lblTitulo.setFocusable(false);
 
@@ -102,7 +107,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(campoTextoID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,33 +143,39 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         
-        Usuario newUser = new Usuario(campoTextoNombre.getText(), campoTextoID.getText(), adminToggle);
+        String nombre = campoTextoNombre.getText();
+        String id = campoTextoID.getText();
 
-        if (biblioteca.agregarUsuario(newUser)){
-            System.out.println("Welcome new user: " + newUser.getNombre());
-            openPanel(newUser);
-        } else {
-            System.out.println("Parece que ya está creado");
-        }
+        if (nombre.equals("Nombre") || id.equals("ID")) return;
+
+        Usuario newUser = new Usuario(nombre, id, adminToggle);
+
+        if (biblioteca.usuarioExiste(id)) return;
+        
+        if (!biblioteca.agregarUsuario(newUser)) return;
+
+        System.out.println("Welcome new user: " + newUser.getNombre());
+        openPanel(newUser);
+
 
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+
         String nombre = campoTextoNombre.getText();
         String id = campoTextoID.getText();
 
-        if (biblioteca.usuarioExiste(nombre, id)) {
-            Usuario user = biblioteca.getUsuario(nombre, id);
-            openPanel(user);
-        }else{
-            System.out.println("usuario inexistente");
-        }
+        if (!biblioteca.usuarioExiste(nombre, id)) return;
+
+        Usuario user = biblioteca.getUsuario(nombre, id);
+        openPanel(user);
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void openPanel(Usuario user) {
         SwingUtilities.invokeLater(() -> {
             PanelForm panelForm = new PanelForm(biblioteca, user);
+            this.setVisible(false);
             panelForm.setVisible(true);
         });
     }

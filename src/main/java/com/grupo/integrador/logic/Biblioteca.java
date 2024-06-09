@@ -135,6 +135,15 @@ public class Biblioteca {
         }
         return false;
     }
+    public boolean usuarioExiste(String id) {
+        for (Usuario usuario : usuarios){
+            if (usuario.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean usuarioExiste(String nombre, String id){
         for (Usuario usuario : usuarios){
             if (usuario.getNombre().equals(nombre) && usuario.getId().equals(id)){
