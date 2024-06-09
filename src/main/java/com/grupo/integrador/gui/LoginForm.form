@@ -70,7 +70,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Noto Sans Mono" size="36" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Librer&#xed;a"/>
+        <Property name="text" type="java.lang.String" value="LIBRERIA"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>

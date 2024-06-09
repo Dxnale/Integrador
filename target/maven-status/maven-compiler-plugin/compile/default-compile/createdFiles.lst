@@ -16,7 +16,6 @@ com\grupo\integrador\persistence\exceptions\NonexistentEntityException.class
 com\grupo\integrador\logic\ControllerLogic.class
 com\grupo\integrador\gui\LoginForm$1.class
 com\grupo\integrador\gui\PanelForm$9.class
-com\grupo\integrador\gui\Solicitudesform.class
 com\grupo\integrador\gui\PanelForm$4.class
 com\grupo\integrador\Integrador.class
 com\grupo\integrador\persistence\LibroJpaController.class
@@ -27,10 +26,9 @@ com\grupo\integrador\gui\PanelForm$7.class
 com\grupo\integrador\persistence\exceptions\IllegalOrphanException.class
 com\grupo\integrador\gui\InventarioForm$1.class
 com\grupo\integrador\gui\LoginForm$4.class
-com\grupo\integrador\gui\Solicitudesform$1.class
 com\grupo\integrador\gui\ReservasForm.class
+com\grupo\integrador\gui\SolicitudesForm.class
 com\grupo\integrador\gui\LoginForm$5.class
-com\grupo\integrador\gui\ReservasForm$1.class
 com\grupo\integrador\logic\Biblioteca.class
 com\grupo\integrador\logic\Libro_.class
 com\grupo\integrador\persistence\ControladorPersistencia.class

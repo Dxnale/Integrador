@@ -31,7 +31,7 @@ public class LoginForm extends javax.swing.JFrame {
         setResizable(false);
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans Mono", 1, 36)); // NOI18N
-        lblTitulo.setText("Librería");
+        lblTitulo.setText("LIBRERIA");
         lblTitulo.setFocusable(false);
 
         btnAdmin.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
@@ -190,7 +190,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
     
     private boolean adminToggle;
-    private Biblioteca biblioteca;
+    private final Biblioteca biblioteca;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnAdmin;

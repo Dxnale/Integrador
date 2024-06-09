@@ -212,15 +212,29 @@ public class PanelForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-        // abrir el form de inventario
+        SwingUtilities.invokeLater(() -> {
+            InventarioForm inventarioForm = new InventarioForm(biblioteca, usuario);
+            this.setVisible(false);
+            inventarioForm.setVisible(true);
+        });
+
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void btnReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservasActionPerformed
-        // abrir el form de reservas
+        SwingUtilities.invokeLater(() -> {
+            ReservasForm reservasForm = new ReservasForm(biblioteca, usuario);
+            this.setVisible(false);
+            reservasForm.setVisible(true);
+        });
+
     }//GEN-LAST:event_btnReservasActionPerformed
 
     private void btnSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudesActionPerformed
-        // abrir el form de solicitudes
+        SwingUtilities.invokeLater(() -> {
+            SolicitudesForm solicitudesForm = new SolicitudesForm(biblioteca, usuario);
+            this.setVisible(false);
+            solicitudesForm.setVisible(true);
+        });
     }//GEN-LAST:event_btnSolicitudesActionPerformed
 
     private void btnInventarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnInventarioFocusGained
@@ -271,8 +285,8 @@ public class PanelForm extends javax.swing.JFrame {
         lblSol.setEnabled(false);
     }//GEN-LAST:event_btnSolicitudesMouseExited
 
-    private Biblioteca biblioteca;
-    private Usuario usuario;
+    private final Biblioteca biblioteca;
+    private final Usuario usuario;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInventario;
