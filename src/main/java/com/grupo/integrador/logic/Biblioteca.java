@@ -68,6 +68,7 @@ public class Biblioteca {
     public boolean agregarLibro(Libro libro){
         if (!libros.contains(libro)){
             libros.add(libro);
+            ctrl.addLibroToDB(libro);
             return true;
         }
         return false;
@@ -76,12 +77,14 @@ public class Biblioteca {
         if (libros.contains(libro)){
             libros.remove(libro);
             eliminados.push(libro);
+            ctrl.removeLibroFromDB(libro);
             return true;
         }
         return false;
     }
     public boolean deshacerEliminacion() {
         if (!eliminados.isEmpty()) {
+            ctrl.addLibroToDB(eliminados.peek());
             libros.add(eliminados.pop());
             return true;
         }
@@ -91,6 +94,7 @@ public class Biblioteca {
     public boolean reservarLibro(Libro libro) {
         if (libros.contains(libro)) {
             libro.setReservado(true);
+            ctrl.setReservadoLibroToDB(libro, true);
             return true;
         }
         return false;
@@ -98,6 +102,7 @@ public class Biblioteca {
     public boolean cancelarReserva(Libro libro) {
         if (libros.contains(libro)) {
             libro.setReservado(false);
+            ctrl.setReservadoLibroToDB(libro, false);
             return true;
         }
         return false;
@@ -106,6 +111,8 @@ public class Biblioteca {
     public boolean solicitarLibro(Libro libro) {
         if (libros.contains(libro)) {
             libro.setSolicitado(true);
+            colaEspera.add(libro);
+            ctrl.setSolicitadoLibroToDB(libro, true);
             return true;
         }
         return false;
@@ -113,6 +120,8 @@ public class Biblioteca {
     public boolean cancelarSolicitud(Libro libro){
         if (libros.contains(libro)){
             libro.setSolicitado(false);
+            colaEspera.remove(libro);
+            ctrl.setSolicitadoLibroToDB(libro, false);
             return true;
         }
         return false;
@@ -121,6 +130,7 @@ public class Biblioteca {
     public boolean agregarUsuario(Usuario usuario){
         if (!usuarios.contains(usuario)){
             usuarios.add(usuario);
+            ctrl.addUsuarioToDB(usuario);
             return true;
         }
         return false;

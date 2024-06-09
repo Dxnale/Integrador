@@ -7,7 +7,6 @@ import javax.swing.SwingUtilities;
 public class Integrador {
 
     public static void main(String[] args) {
-
         SwingUtilities.invokeLater(() -> {
             Biblioteca biblioteca = new Biblioteca();
             LoginForm loginForm = new LoginForm(biblioteca);
