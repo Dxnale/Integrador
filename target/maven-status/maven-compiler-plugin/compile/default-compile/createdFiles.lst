@@ -1,4 +1,5 @@
 com\grupo\integrador\gui\PanelForm$3.class
+com\grupo\integrador\gui\LoginForm$7.class
 com\grupo\integrador\gui\PanelForm.class
 com\grupo\integrador\persistence\exceptions\PreexistingEntityException.class
 com\grupo\integrador\gui\PanelForm$8.class

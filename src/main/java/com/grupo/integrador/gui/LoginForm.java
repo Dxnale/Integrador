@@ -18,17 +18,29 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTitulo = new javax.swing.JLabel();
+        btnAdmin = new javax.swing.JRadioButton();
         campoTextoNombre = new javax.swing.JTextField();
         campoTextoID = new javax.swing.JTextField();
-        btnAdmin = new javax.swing.JRadioButton();
         btnLogin = new java.awt.Button();
         btnRegister = new java.awt.Button();
-        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setName("LoginFrame"); // NOI18N
         setResizable(false);
+
+        lblTitulo.setFont(new java.awt.Font("Noto Sans Mono", 1, 36)); // NOI18N
+        lblTitulo.setText("Librería");
+        lblTitulo.setFocusable(false);
+
+        btnAdmin.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
+        btnAdmin.setText("Admin");
+        btnAdmin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                btnAdminItemStateChanged(evt);
+            }
+        });
 
         campoTextoNombre.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         campoTextoNombre.setText("Nombre");
@@ -42,6 +54,11 @@ public class LoginForm extends javax.swing.JFrame {
                 campoTextoNombreMouseClicked(evt);
             }
         });
+        campoTextoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTextoNombreActionPerformed(evt);
+            }
+        });
 
         campoTextoID.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         campoTextoID.setText("ID");
@@ -49,14 +66,6 @@ public class LoginForm extends javax.swing.JFrame {
         campoTextoID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 campoTextoIDMouseClicked(evt);
-            }
-        });
-
-        btnAdmin.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
-        btnAdmin.setText("Admin");
-        btnAdmin.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnAdminItemStateChanged(evt);
             }
         });
 
@@ -75,10 +84,6 @@ public class LoginForm extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-
-        lblTitulo.setFont(new java.awt.Font("Noto Sans Mono", 1, 36)); // NOI18N
-        lblTitulo.setText("Librería");
-        lblTitulo.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,6 +176,10 @@ public class LoginForm extends javax.swing.JFrame {
         openPanel(user);
 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void campoTextoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoNombreActionPerformed
+        btnLoginActionPerformed(evt);
+    }//GEN-LAST:event_campoTextoNombreActionPerformed
 
     private void openPanel(Usuario user) {
         SwingUtilities.invokeLater(() -> {

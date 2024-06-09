@@ -30,6 +30,7 @@ public class PanelForm extends javax.swing.JFrame {
         lblInv = new javax.swing.JLabel();
         lvlRes = new javax.swing.JLabel();
         lblSol = new javax.swing.JLabel();
+        lblversion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -136,6 +137,10 @@ public class PanelForm extends javax.swing.JFrame {
         lblSol.setFocusable(false);
         lblSol.setPreferredSize(new java.awt.Dimension(171, 96));
 
+        lblversion.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
+        lblversion.setText("v1.0");
+        lblversion.setPreferredSize(new java.awt.Dimension(171, 96));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,12 +158,14 @@ public class PanelForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                     .addComponent(lblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(133, 133, 133))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblversion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnInventario, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnReservas, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSolicitudes, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                    .addComponent(btnInventario)
+                                    .addComponent(btnReservas)
+                                    .addComponent(btnSolicitudes))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -172,7 +179,9 @@ public class PanelForm extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblversion, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInventario)
@@ -274,6 +283,7 @@ public class PanelForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblSol;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblversion;
     private javax.swing.JLabel lvlRes;
     // End of variables declaration//GEN-END:variables
 

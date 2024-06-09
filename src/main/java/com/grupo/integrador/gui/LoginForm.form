@@ -65,6 +65,26 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblTitulo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans Mono" size="36" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Librer&#xed;a"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="btnAdmin">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans Mono" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Admin"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="btnAdminItemStateChanged"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JTextField" name="campoTextoNombre">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -75,6 +95,7 @@
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTextoNombreFocusGained"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoTextoNombreMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoTextoNombreActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="campoTextoID">
@@ -89,17 +110,6 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoTextoIDMouseClicked"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="btnAdmin">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Noto Sans Mono" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Admin"/>
-      </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="btnAdminItemStateChanged"/>
       </Events>
     </Component>
     <Component class="java.awt.Button" name="btnLogin">
@@ -123,15 +133,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTitulo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Noto Sans Mono" size="36" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Librer&#xed;a"/>
-        <Property name="focusable" type="boolean" value="false"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
