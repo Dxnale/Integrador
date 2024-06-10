@@ -12,6 +12,7 @@ public class InventarioForm extends javax.swing.JFrame {
 
 
     public InventarioForm(Biblioteca biblioteca, Usuario usuario) {
+        this.libroSeleccionado = null;
         this.usuario = usuario;
         this.biblioteca = biblioteca;
         initComponents();
@@ -49,14 +50,43 @@ public class InventarioForm extends javax.swing.JFrame {
         });
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnSolicitar.setText("Solicitar");
+        btnSolicitar.setEnabled(false);
+        btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarActionPerformed(evt);
+            }
+        });
 
         btnReservar.setText("Reservar");
+        btnReservar.setEnabled(false);
+        btnReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnDeshacerEliminacion.setText("Deshacer Eliminacion");
+        btnDeshacerEliminacion.setEnabled(false);
+        btnDeshacerEliminacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeshacerEliminacionActionPerformed(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans Mono", 1, 12)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,6 +159,43 @@ public class InventarioForm extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // Abrir ventada de inputs para agregar un nuevo libro a la tabla y a la base de datos
+        System.out.println("pendiente");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
+        biblioteca.solicitarLibro(libroSeleccionado);
+        System.out.println("se ha solicitado: " + libroSeleccionado.getTitulo());
+        libroSeleccionado = null;
+        jTable.setModel(getTableModel());
+        buttonEnabler(libroSeleccionado);
+
+    }//GEN-LAST:event_btnSolicitarActionPerformed
+
+    private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+        biblioteca.reservarLibro(libroSeleccionado);
+        System.out.println("se ha reservado: " + libroSeleccionado.getTitulo());
+        libroSeleccionado = null;
+        jTable.setModel(getTableModel());
+        buttonEnabler(libroSeleccionado);
+    }//GEN-LAST:event_btnReservarActionPerformed
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        biblioteca.eliminarLibro(libroSeleccionado);
+        System.out.println("se ha eliminado: " + libroSeleccionado.getTitulo());
+        libroSeleccionado = null;
+        jTable.setModel(getTableModel());
+        buttonEnabler(libroSeleccionado);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnDeshacerEliminacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeshacerEliminacionActionPerformed
+        biblioteca.deshacerEliminacion();
+        libroSeleccionado = null;
+        jTable.setModel(getTableModel());
+        buttonEnabler(libroSeleccionado);
+    }//GEN-LAST:event_btnDeshacerEliminacionActionPerformed
+
     private TableModel getTableModel(){
         return biblioteca.getLibrosTableModel();
     }
@@ -138,14 +205,29 @@ public class InventarioForm extends javax.swing.JFrame {
         this.jTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
             if (!event.getValueIsAdjusting()) {
                 int selectedRow = this.jTable.getSelectedRow();
-                if (selectedRow != -1) {
-                    Libro libroSeleccionado = modelo.getLibroAt(selectedRow);
-                    System.out.println("Libro seleccionado: " + libroSeleccionado.getTitulo());
-                }
+                if (selectedRow != -1) buttonEnabler(modelo.getLibroAt(selectedRow));
             }
         });
     }
-    
+
+    private void buttonEnabler(Libro libro) {
+        
+        libroSeleccionado = libro;
+
+        if (libro != null) {
+            btnSolicitar.setEnabled(!libro.isSolicitado());
+            btnReservar.setEnabled(!libro.isReservado());
+            btnEliminar.setEnabled(true);
+        } else {
+            btnSolicitar.setEnabled(false);
+            btnReservar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+        }
+
+        btnDeshacerEliminacion.setEnabled(!biblioteca.getEliminados().isEmpty());
+    }
+
+    private Libro libroSeleccionado;
     private final Biblioteca biblioteca;
     private final Usuario usuario;
 
@@ -161,4 +243,5 @@ public class InventarioForm extends javax.swing.JFrame {
     private javax.swing.JTable jTable;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
+
 }
