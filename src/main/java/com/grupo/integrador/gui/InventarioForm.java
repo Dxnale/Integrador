@@ -1,7 +1,12 @@
 package com.grupo.integrador.gui;
 
 import com.grupo.integrador.logic.Biblioteca;
+import com.grupo.integrador.logic.Libro;
+import com.grupo.integrador.logic.LibrosTableModel;
 import com.grupo.integrador.logic.Usuario;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.TableModel;
 
 public class InventarioForm extends javax.swing.JFrame {
 
@@ -16,7 +21,7 @@ public class InventarioForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnSalir = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -31,24 +36,19 @@ public class InventarioForm extends javax.swing.JFrame {
         setName("Inventario"); // NOI18N
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jTable.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
+        jTable.setModel(getTableModel());
+        listener();
+        jScrollPane1.setViewportView(jTable);
 
         btnSalir.setText("Salir");
-
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
+
+        btnAgregar.setText("Agregar");
 
         btnSolicitar.setText("Solicitar");
 
@@ -121,10 +121,30 @@ public class InventarioForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        SwingUtilities.invokeLater(() -> {
+            PanelForm panelForm = new PanelForm(biblioteca, usuario);
+            this.setVisible(false);
+            panelForm.setVisible(true);
+        });
+    }//GEN-LAST:event_btnSalirActionPerformed
 
+    private TableModel getTableModel(){
+        return biblioteca.getLibrosTableModel();
+    }
+    
+    private void listener(){
+        LibrosTableModel modelo = biblioteca.getLibrosTableModel();
+        this.jTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            if (!event.getValueIsAdjusting()) {
+                int selectedRow = this.jTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    Libro libroSeleccionado = modelo.getLibroAt(selectedRow);
+                    System.out.println("Libro seleccionado: " + libroSeleccionado.getTitulo());
+                }
+            }
+        });
+    }
     
     private final Biblioteca biblioteca;
     private final Usuario usuario;
@@ -138,7 +158,7 @@ public class InventarioForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

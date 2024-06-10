@@ -5,6 +5,7 @@ com\grupo\integrador\persistence\exceptions\PreexistingEntityException.class
 com\grupo\integrador\gui\PanelForm$8.class
 com\grupo\integrador\logic\Libro.class
 com\grupo\integrador\persistence\UsuarioJpaController.class
+com\grupo\integrador\logic\LibrosTableModel.class
 com\grupo\integrador\logic\Usuario.class
 com\grupo\integrador\logic\Usuario_.class
 com\grupo\integrador\gui\LoginForm.class

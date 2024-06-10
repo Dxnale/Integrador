@@ -53,6 +53,14 @@ public class Libro implements Serializable {
         return solicitado;
     }
 
+    public String isReservadoString() {
+        return this.reservado ? "SI" : "NO";
+    }
+
+    public String isSolicitadoString() {
+        return this.solicitado ? "SI" : "NO";
+    }
+
     public void setReservado(boolean reservado) {
         this.reservado = reservado;
     }

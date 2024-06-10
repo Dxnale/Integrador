@@ -162,4 +162,8 @@ public class Biblioteca {
         return null;
     }
 
+    public LibrosTableModel getLibrosTableModel() {
+        return new LibrosTableModel(libros);
+    }
+
 }

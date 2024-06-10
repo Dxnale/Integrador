@@ -6,9 +6,9 @@ import javax.swing.SwingUtilities;
 
 public class PanelForm extends javax.swing.JFrame {
 
-    public PanelForm(Biblioteca bibliotec, Usuario usuario) {
+    public PanelForm(Biblioteca biblioteca, Usuario usuario) {
         this.usuario = usuario;
-        this.biblioteca = bibliotec;
+        this.biblioteca = biblioteca;
         initComponents();
     }
 
