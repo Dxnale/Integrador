@@ -1,14 +1,16 @@
 package com.grupo.integrador.gui;
 
 import com.grupo.integrador.logic.Biblioteca;
+import com.grupo.integrador.logic.Callback;
 import com.grupo.integrador.logic.Libro;
 import com.grupo.integrador.logic.LibrosTableModel;
 import com.grupo.integrador.logic.Usuario;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.TableModel;
 
-public class InventarioForm extends javax.swing.JFrame {
+public class InventarioForm extends javax.swing.JFrame implements Callback {
 
 
     public InventarioForm(Biblioteca biblioteca, Usuario usuario) {
@@ -160,8 +162,10 @@ public class InventarioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // Abrir ventada de inputs para agregar un nuevo libro a la tabla y a la base de datos
-        System.out.println("pendiente");
+        
+        AgregarForm agregarForm = new AgregarForm(biblioteca, this);
+        agregarForm.setVisible(true);
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
@@ -170,12 +174,18 @@ public class InventarioForm extends javax.swing.JFrame {
         libroSeleccionado = null;
         jTable.setModel(getTableModel());
         buttonEnabler(libroSeleccionado);
-
     }//GEN-LAST:event_btnSolicitarActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+
+        String codigoIngresado = JOptionPane.showInputDialog("Ingrese el codigo de solicitud del libro: ");
+        if (codigoIngresado == null || !codigoIngresado.equals(libroSeleccionado.getCodigoReserva())) {
+            JOptionPane.showMessageDialog(null, "Codigo de solicitud incorrecto");
+            return;
+        }
+
         biblioteca.reservarLibro(libroSeleccionado);
-        System.out.println("se ha reservado: " + libroSeleccionado.getTitulo());
+        JOptionPane.showMessageDialog(null, "Se ha reservado: " + libroSeleccionado.getTitulo());
         libroSeleccionado = null;
         jTable.setModel(getTableModel());
         buttonEnabler(libroSeleccionado);
@@ -199,7 +209,6 @@ public class InventarioForm extends javax.swing.JFrame {
     private TableModel getTableModel(){
         return biblioteca.getLibrosTableModel();
     }
-    
     private void listener(){
         LibrosTableModel modelo = biblioteca.getLibrosTableModel();
         this.jTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
@@ -209,9 +218,7 @@ public class InventarioForm extends javax.swing.JFrame {
             }
         });
     }
-
     private void buttonEnabler(Libro libro) {
-        
         libroSeleccionado = libro;
 
         if (libro != null) {
@@ -243,5 +250,10 @@ public class InventarioForm extends javax.swing.JFrame {
     private javax.swing.JTable jTable;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateTableModel() {
+        jTable.setModel(getTableModel());
+    }
 
 }
