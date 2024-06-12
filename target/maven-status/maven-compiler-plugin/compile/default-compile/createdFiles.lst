@@ -8,6 +8,7 @@ com\grupo\integrador\logic\Usuario_.class
 com\grupo\integrador\gui\ReservasForm$2.class
 com\grupo\integrador\gui\LoginForm$3.class
 com\grupo\integrador\gui\PanelForm$6.class
+com\grupo\integrador\gui\SolicitudesForm$1.class
 com\grupo\integrador\persistence\exceptions\NonexistentEntityException.class
 com\grupo\integrador\gui\AgregarForm$1.class
 com\grupo\integrador\logic\ControllerLogic.class
@@ -24,6 +25,7 @@ com\grupo\integrador\gui\ReservasForm$1.class
 com\grupo\integrador\gui\InventarioForm$4.class
 com\grupo\integrador\persistence\ControladorPersistencia.class
 com\grupo\integrador\gui\PanelForm$5.class
+com\grupo\integrador\gui\SolicitudesForm$2.class
 com\grupo\integrador\gui\PanelForm.class
 com\grupo\integrador\gui\PanelForm$8.class
 com\grupo\integrador\persistence\UsuarioJpaController.class

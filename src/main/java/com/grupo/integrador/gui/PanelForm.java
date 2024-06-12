@@ -223,7 +223,6 @@ public class PanelForm extends javax.swing.JFrame {
     private void btnReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservasActionPerformed
         SwingUtilities.invokeLater(() -> {
             ReservasForm reservasForm = new ReservasForm(biblioteca, usuario);
-            this.setVisible(false);
             reservasForm.setVisible(true);
         });
 
@@ -232,7 +231,6 @@ public class PanelForm extends javax.swing.JFrame {
     private void btnSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudesActionPerformed
         SwingUtilities.invokeLater(() -> {
             SolicitudesForm solicitudesForm = new SolicitudesForm(biblioteca, usuario);
-            this.setVisible(false);
             solicitudesForm.setVisible(true);
         });
     }//GEN-LAST:event_btnSolicitudesActionPerformed

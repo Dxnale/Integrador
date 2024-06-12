@@ -26,7 +26,8 @@ public class ReservasForm extends javax.swing.JFrame {
         btnCancelarTodas = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTable.setFont(new java.awt.Font("Noto Sans Mono", 0, 12)); // NOI18N
         jTable.setModel(getTableModel());
@@ -88,6 +89,7 @@ public class ReservasForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarReservaActionPerformed

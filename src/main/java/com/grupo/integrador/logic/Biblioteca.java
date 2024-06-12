@@ -60,6 +60,16 @@ public class Biblioteca {
         }
     }
 
+    public void resetLibrosSolicitados() {
+        List<Libro> librosReservados = getLibrosSolicitados();
+
+        for (Libro librosReservado : librosReservados) {
+            librosReservado.setSolicitado(false);
+            ctrl.setSolicitadoLibroToDB(librosReservado, false);
+            colaEspera.remove(librosReservado);
+        }
+    }
+
     public List<Libro> getLibrosSolicitados() {
         List<Libro> solicitados = new LinkedList<>();
 
