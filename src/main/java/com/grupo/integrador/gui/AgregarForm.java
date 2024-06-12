@@ -34,6 +34,7 @@ public class AgregarForm extends javax.swing.JFrame {
         lblTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTitulo.setText("Titulo");

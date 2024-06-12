@@ -233,6 +233,11 @@ public class InventarioForm extends javax.swing.JFrame implements Callback {
 
         btnDeshacerEliminacion.setEnabled(!biblioteca.getEliminados().isEmpty());
     }
+    
+    @Override
+    public void updateTableModel() {
+        jTable.setModel(getTableModel());
+    }
 
     private Libro libroSeleccionado;
     private final Biblioteca biblioteca;
@@ -250,10 +255,4 @@ public class InventarioForm extends javax.swing.JFrame implements Callback {
     private javax.swing.JTable jTable;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void updateTableModel() {
-        jTable.setModel(getTableModel());
-    }
-
 }

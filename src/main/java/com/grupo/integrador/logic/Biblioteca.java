@@ -1,6 +1,5 @@
 package com.grupo.integrador.logic;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -42,18 +41,27 @@ public class Biblioteca {
         return eliminados;
     }
     public List<Libro> getLibrosReservados() {
-        List<Libro> reservados = new ArrayList<>();
+        List<Libro> reservados = new LinkedList<>();
 
         for (Libro libro : libros) {
             if (libro.isReservado()) {
                 reservados.add(libro);
             }
         }
-
         return reservados;
     }
+
+    public void resetLibrosReservados() {
+        List<Libro> librosReservados = getLibrosReservados();
+
+        for (Libro librosReservado : librosReservados) {
+            librosReservado.setReservado(false);
+            ctrl.setReservadoLibroToDB(librosReservado, false);
+        }
+    }
+
     public List<Libro> getLibrosSolicitados() {
-        List<Libro> solicitados = new ArrayList<>();
+        List<Libro> solicitados = new LinkedList<>();
 
         for (Libro libro : libros) {
             if (libro.isSolicitado()) {
@@ -163,7 +171,15 @@ public class Biblioteca {
     }
 
     public LibrosTableModel getLibrosTableModel() {
-        return new LibrosTableModel(libros);
+        return new LibrosTableModel(this.libros);
+    }
+
+    public LibrosTableModel getReservadosTableModel() {
+        return new LibrosTableModel(getLibrosReservados());
+    }
+
+    public LibrosTableModel getSolicitadosTableModel() {
+        return new LibrosTableModel(getLibrosSolicitados());
     }
 
 }

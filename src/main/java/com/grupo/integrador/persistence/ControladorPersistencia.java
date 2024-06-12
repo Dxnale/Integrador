@@ -39,7 +39,6 @@ public class ControladorPersistencia {
     }
 
     public void setReservadoLibroToDB(Libro libro, boolean reservado) {
-        
         try {
             libro.setReservado(reservado);
             libroJpaController.edit(libro);

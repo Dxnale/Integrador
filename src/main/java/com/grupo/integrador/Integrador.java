@@ -13,5 +13,4 @@ public class Integrador {
             loginForm.setVisible(true);
         });
     }
-
 }

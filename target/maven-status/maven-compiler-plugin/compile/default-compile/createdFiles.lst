@@ -5,6 +5,7 @@ com\grupo\integrador\logic\Libro.class
 com\grupo\integrador\gui\InventarioForm$5.class
 com\grupo\integrador\logic\Callback.class
 com\grupo\integrador\logic\Usuario_.class
+com\grupo\integrador\gui\ReservasForm$2.class
 com\grupo\integrador\gui\LoginForm$3.class
 com\grupo\integrador\gui\PanelForm$6.class
 com\grupo\integrador\persistence\exceptions\NonexistentEntityException.class
@@ -19,6 +20,7 @@ com\grupo\integrador\gui\PanelForm$2.class
 com\grupo\integrador\gui\InventarioForm.class
 com\grupo\integrador\gui\InventarioForm$1.class
 com\grupo\integrador\gui\LoginForm$4.class
+com\grupo\integrador\gui\ReservasForm$1.class
 com\grupo\integrador\gui\InventarioForm$4.class
 com\grupo\integrador\persistence\ControladorPersistencia.class
 com\grupo\integrador\gui\PanelForm$5.class
